@@ -5,9 +5,16 @@ import { CatsModule } from './cats/cats.module';
 import { LoggerMiddleware } from './logger/logger.middleware';
 import { MorganMiddleware } from '@nest-middlewares/morgan';
 import { ChienModule } from './chien/chien.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { OwnerModule } from './owner/owner.module';
 
 @Module({
-  imports: [CatsModule, ChienModule],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost/zoomanagement'),
+    CatsModule,
+    ChienModule,
+    OwnerModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
